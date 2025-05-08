@@ -1574,5 +1574,31 @@ _WidgetManager._RegisterWidget('_PopularPostsView', new _WidgetInfo('PopularPost
 _WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label1', 'sidepar', document.getElementById('Label1'), {}, 'displayModeFull'));
 _WidgetManager._RegisterWidget('_FeaturedPostView', new _WidgetInfo('FeaturedPost1', 'footer-col1', document.getElementById('FeaturedPost1'), {}, 'displayModeFull'));
 </script>
+          <!-- ضع هذا قبل وسم </body> في قالبك (Theme → Edit HTML) -->
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function(){
+    // اختر عنصر المحتوى حسب قالبك (post-body أو entry-content)
+    var content = document.querySelector('.post-body') || document.querySelector('.entry-content');
+    if (!content) return;
+
+    // جمع كل الفقرات داخل المحتوى
+    var paras = Array.prototype.slice.call(content.getElementsByTagName('p'));
+    if (paras.length < 2) return;
+
+    // احسب منتصف عدد الفقرات
+    var halfwayIndex = Math.floor(paras.length / 2);
+
+    // أنشئ العنصر الذي يحتوي على كلمة monetag
+    var marker = document.createElement('div');
+    marker.style.textAlign = 'center';
+    marker.style.margin = '20px 0';
+    marker.innerText = 'monetag';
+
+    // أدخل العنصر بعد الفقرة الوسطيّة
+    var refPara = paras[halfwayIndex];
+    refPara.parentNode.insertBefore(marker, refPara.nextSibling);
+  });
+</script>
+
 </body></noscript></body>
 </html>
