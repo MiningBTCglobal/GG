@@ -1556,7 +1556,8 @@ Emerging Trends & Future of Crypto</a>
 
     <noscript id='blogger-components'>
 
-</body></noscript><<!-- ضع هذا قبل وسم </body> في قالبك (Theme → Edit HTML) -->
+</body><
+      <!-- ضع هذا قبل وسم </body> في قالبك (Theme → Edit HTML) -->
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function(){
     // اختر عنصر المحتوى حسب قالبك (post-body أو entry-content)
@@ -1565,21 +1566,19 @@ Emerging Trends & Future of Crypto</a>
 
     // جمع كل الفقرات داخل المحتوى
     var paras = Array.prototype.slice.call(content.getElementsByTagName('p'));
-    if (paras.length < 2) return;
+    if (paras.length === 0) return;
 
-    // احسب منتصف عدد الفقرات
-    var halfwayIndex = Math.floor(paras.length / 2);
-
-    // أنشئ العنصر الذي يحتوي على كلمة monetag
+    // أنشئ العنصر الذي يحتوي على الكلمة
     var marker = document.createElement('div');
     marker.style.textAlign = 'center';
     marker.style.margin = '20px 0';
-    marker.innerText = 'monetag';
+    marker.innerText = 'hello monetag';
 
-    // أدخل العنصر بعد الفقرة الوسطيّة
-    var refPara = paras[halfwayIndex];
-    refPara.parentNode.insertBefore(marker, refPara.nextSibling);
+    // أدخل العنصر قبل أول فقرة (في بداية المحتوى)
+    var firstPara = paras[0];
+    content.insertBefore(marker, firstPara);
   });
 </script>
+
 /body>
 </html>
